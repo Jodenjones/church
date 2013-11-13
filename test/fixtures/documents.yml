@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venc: 2013-11-11
+  valor: 
+  parceiro_id: 1
+  conta_id: 1
+  sta: MyString
+
+two:
+  venc: 2013-11-11
+  valor: 
+  parceiro_id: 1
+  conta_id: 1
+  sta: MyString

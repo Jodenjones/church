@@ -1,0 +1,36 @@
+<%= form_for(@city) do |f| %>
+  <% if @city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+      <% @city.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+	<fieldset>
+		<div class="row">
+		    <div class="six columns">
+		    	<%= f.label :name %><br>
+	    	  <%= f.text_field :name%>
+	    	</div>
+	    	
+	    	<div class="six columns">
+	    		<div class="custom dropdown">
+	    		
+	    		<%= f.label :state_id %><br>
+	    		<%= collection_select(:city, :state_id, State.all, :id, :name, {:prompt => "Selecione o Estado"}, :class => "selector") %>
+	    		</div>
+	  		</div>
+	  	</div>
+	  	<br>
+	    
+		<%= f.submit :class => "button" %>
+	</fieldset>
+	  
+  
+  
+<% end %>

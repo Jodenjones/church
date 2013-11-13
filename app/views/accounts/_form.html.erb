@@ -1,0 +1,35 @@
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<fieldset>
+	<div class="row">
+       	<div class="small-3 columns">
+			<%= f.label :name %>
+		</div>
+		<div class="small-9 columns">
+		    <%= f.text_field :name %>
+		</div>
+	</div>
+		
+	<div class="row">
+       	<div class="small-3 columns">
+			<%= f.label :tipo %>
+		</div>
+		<div class="small-9 columns">
+		    <%= f.select :tipo,[['Entrada', 'E'], ['Saída', 'S']], :prompt => "Selecione o tipo" %>
+		</div>
+	</div>
+</fieldset>
+	
+			
+    <%= f.submit 'Salvar', :class => 'button' %>
+<% end %>

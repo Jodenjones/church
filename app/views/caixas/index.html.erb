@@ -1,0 +1,19 @@
+<h1>Listing caixas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => @caixas %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caixa', new_caixa_path %>

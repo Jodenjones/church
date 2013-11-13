@@ -1,0 +1,22 @@
+<h1>Listing members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cpf</th>
+      <th>Entrada</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render :partial => @members %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

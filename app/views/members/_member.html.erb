@@ -1,0 +1,8 @@
+<tr>
+	<td><%= member.parceiro.name %></td>
+    <td><%= member.parceiro.cpf %></td>
+    <td><%= member.entrada %></td>
+    <td><%= link_to 'Show', member %></td>
+    <td><%= link_to 'Edit', edit_member_path(member) %></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

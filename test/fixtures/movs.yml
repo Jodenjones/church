@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data: 2013-11-11
+  valor: 9.99
+  document_id: 1
+  caixa_id: 1
+  conta_id: 1
+
+two:
+  data: 2013-11-11
+  valor: 9.99
+  document_id: 1
+  caixa_id: 1
+  conta_id: 1

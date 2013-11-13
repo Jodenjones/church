@@ -1,0 +1,15 @@
+<%= render :partial => 'parceiros/show', :locals => {:parceiro => @fornecedor.parceiro }%>
+<fieldset>
+	<legend>Dados do Fornecedor</legend>
+	<p>
+	  <strong>Regime:</strong>
+	  <%= @fornecedor.regime %>
+	</p>
+	
+	<p>
+	  <strong>Tipo:</strong>
+	  <%= @fornecedor.tipo %>
+	</p>
+</fieldset>
+<%= link_to 'Edit', edit_fornecedor_path(@fornecedor) %> |
+<%= link_to 'Back', fornecedors_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this Profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<fieldset>
+		<div class="row">
+		    <div class="six columns">
+		    	<%= f.label :name %><br>
+	    	  <%= f.text_field :name%>
+	    	</div>
+	    	
+	    	<div class="six columns">
+	    		<div class="custom dropdown">
+	    		<%= f.label :city_id %><br>
+	    		<%= collection_select(:profile, :city_id, City.all, :id, :name, {:prompt => "Selecione a Cidade"}, :class => "selector") %>
+	    		</div>
+	  		</div>
+	  	</div>
+	  	<br>
+	    
+		<%= f.submit :class => "button" %>
+	</fieldset>
+<% end %>

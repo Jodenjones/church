@@ -1,0 +1,27 @@
+<%= link_to 'New Document', new_document_path %>
+
+<fieldset>
+	<legend>Lista de Documentos</legend>
+	<%= form_tag("/documents", :method => :get) do %>		
+		<%= submit_tag 'Filtrar', :class => 'button'%>
+	<% end %>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Venc</th>
+	      <th>Valor</th>
+	      <th>Parceiro</th>
+	      <th>Conta</th>
+	      <th>Sta</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	  	<%= render partial: @documents %>
+	  </tbody>
+	</table>
+</fieldset>

@@ -1,0 +1,20 @@
+<h1>Listing fornecedors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regime</th>
+      <th>Tipo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render :partial => @fornecedors %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Fornecedor', new_fornecedor_path %>

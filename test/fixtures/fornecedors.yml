@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  regime: 1
+  tipo: 1
+
+two:
+  regime: 1
+  tipo: 1

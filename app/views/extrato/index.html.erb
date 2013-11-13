@@ -1,0 +1,40 @@
+<h1>Extrato de Movimentação</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Valor</th>
+      <th>Caixa</th>
+      <th>Conta</th>
+      <th>Documento</th>
+      <th>Acumulado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% @total = 0
+	@movs.each do |mov|
+				 
+	  	if mov.account.tipo == 'E' 
+	  		@total = @total + mov.valor %>
+			<tr style ="background:#cfc">
+		<%else
+			@total = @total - mov.valor %>
+			<tr style ="background:#fcc">
+		<%end%>
+			<td><%= mov.dtlanc %></td>
+		    <td><%= mov.valor %></td>
+		    <td><%= mov.caixa.name %></td>
+			<td><%= mov.account.name %></td>
+		    <td><%= mov.document.parceiro.name %></td>
+		    <td><%= @total %></td>    
+		</tr>
+	<% end %>
+	<tr>
+		<th colspan="5"></th>
+		<td><b><%= @total %></b></td>
+	</tr>
+	
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @state.name %>
+</p>
+
+<p>
+  <strong>Sigla:</strong>
+  <%= @state.sigla %>
+</p>
+
+<%= link_to 'Edit', edit_state_path(@state) %> |
+<%= link_to 'Back', states_path %>

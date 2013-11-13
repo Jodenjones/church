@@ -1,0 +1,24 @@
+<%= f.fields_for parceiro do |p| %>
+	<fieldset>
+		<legend>Dados Pessoais</legend>
+				
+		<div class="row">
+        	<div class="small-3 columns">
+				<%= p.label :name %>
+			</div>
+			<div class="small-9 columns">
+			    <%= p.text_field :name %>
+			</div>
+		</div>
+
+		<div class="row">
+        	<div class="small-3 columns">
+				<%= p.label :cpf %>
+			</div>
+			<div class="small-9 columns">
+			    <%= p.text_field :cpf %>
+			</div>
+		</div>
+		
+	</fieldset>
+<% end %>

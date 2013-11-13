@@ -1,0 +1,40 @@
+<h5>Documentos para Baixa</h5>
+<fieldset>
+	<legend>Filtros</legend>
+	<%= form_tag("/documents", :method => :get) do %>		
+		<%= submit_tag 'Filtrar', :class => 'button'%>
+	<% end %>
+</fieldset>
+<fieldset>
+	<legend>Dados da Baixa</legend>
+	<%= form_tag('/documents/baixar', :method => :post) do %>  
+		<%= select_tag "caixa", options_from_collection_for_select(Caixa.all, "id", "name"), :prompt => "Selecione o caixa" %>
+		
+		<table>
+			<thead>
+				<tr>
+					<th> </th>
+		      		<th>Venc</th>
+		      		<th>Valor</th>
+		      		<th>Parceiro</th>
+		      		<th>Conta</th>
+		      		<th>Sta</th>
+		    	</tr>
+		  	</thead>
+		
+		  	<tbody>
+		  		<% @documents.each do |document|%>
+					<tr>
+						<td><%= check_box_tag 'documents_ids[]', document.id %></td>
+						<td><%= document.venc %></td>
+				        <td><%= document.valor %></td>
+				        <td><%= document.parceiro.name %></td>
+				        <td><%= document.account.name %></td>
+				        <td><%= document.sta %></td>
+					</tr>
+		  		<% end %>
+		  	</tbody>
+		</table>		
+		<%= submit_tag 'Baixar', :class => :button %>		  
+	<% end %>
+</fieldset>

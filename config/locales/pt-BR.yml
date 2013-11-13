@@ -1,0 +1,15 @@
+pt:
+  activerecord:
+    models:
+      city:
+        one: cidade
+        other: cidades
+      state:
+        one: Estado
+        other: Estados
+    errors:
+      messages:
+        record_invalid: "Falha na Validação: %{errors}"
+        restrict_dependent_destroy:
+          one: "Não é possivel apagar esse %{model} pois ele possui um %{record} dependente"
+          many: "Não é possivel apagar esse %{model} pois ele possui %{record} dependentes"

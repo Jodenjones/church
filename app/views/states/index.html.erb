@@ -1,0 +1,20 @@
+<h1>Listing states</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sigla</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render :partial => @states %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New State', new_state_path %>

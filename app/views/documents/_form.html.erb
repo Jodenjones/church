@@ -1,0 +1,55 @@
+<%= form_for(@document) do |f| %>
+	<% if @document.errors.any? %>
+    	<div id="error_explanation">
+      		<h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+      		<ul>
+      			<% @document.errors.full_messages.each do |msg| %>
+        			<li><%= msg %></li>
+      			<% end %>
+      		</ul>
+    	</div>
+  	<% end %>
+  
+	<fieldset>
+		<legend>Dados do Documento</legend>
+		
+		<div class="row">
+    		<div class="small-3 columns">
+				<%= f.label :venc %>
+			</div>
+			<div class="small-6 columns">
+				<%= f.date_field :venc %>
+			</div>
+		</div>
+		
+		<div class="row">
+    		<div class="small-3 columns">
+				<%= f.label :valor %>
+			</div>
+			<div class="small-6 columns">
+				<%= f.text_field :valor %>
+			</div>
+		</div>
+		
+		<div class="row">
+	       	<div class="small-3 columns">
+				<%= f.label :parceiro_id %>
+			</div>
+			<div class="small-9 columns">
+			    <%= collection_select(:document, :parceiro_id, Parceiro.all, :id, :name, {:prompt => "Selecione o Parceiro"}, :class => "selector") %>
+			</div>
+		</div>
+		
+		<div class="row">
+	       	<div class="small-3 columns">
+				<%= f.label :account_id %>
+			</div>
+			<div class="small-9 columns">
+			    <%= collection_select(:document, :account_id, Account.all, :id, :name, {:prompt => "Selecione a Conta"}, :class => "selector") %>
+			</div>
+		</div>
+	</fieldset>
+	
+    <%= f.submit 'Criar documento', :class => 'button'%>
+  
+<% end %>
