@@ -1,19 +1,12 @@
 class Member < ActiveRecord::Base
-  belongs_to :parceiro, :dependent => :destroy
+  belongs_to :parceiro
   accepts_nested_attributes_for :parceiro
   validates_presence_of :parceiro
-  before_create :set_parceiro
+  before_validation :set_parceiro, :on => :create
   
-  
-  def errors
-    erros = super
-    self.parceiro.errors[:base].each do |e| 
-      erros.add(:base,e) 
-    end
-    erros
-  end
   
   def set_parceiro
+    puts "jhon"
     if self.new_record?
       par = Parceiro.find_by_cpf self.parceiro.cpf
       if par

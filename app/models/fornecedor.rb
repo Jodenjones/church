@@ -1,13 +1,13 @@
 class Fornecedor < ActiveRecord::Base
-  belongs_to :parceiro, :dependent => :destroy
+  belongs_to :parceiro
   accepts_nested_attributes_for :parceiro
   validates_presence_of :parceiro
-  before_validation :set_parceiro, on: :create
+  before_validation :set_parceiro, :on => :create
   
   def errors
     erros = super
     self.parceiro.errors[:base].each do |e| 
-      erros.add(:base,e) 
+      #erros.add(:base,e) 
     end
     erros
   end

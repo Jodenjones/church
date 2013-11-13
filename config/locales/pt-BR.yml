@@ -7,9 +7,14 @@ pt:
       state:
         one: Estado
         other: Estados
+    attributes:
+      parceiro:
+        name: Nome
+        cpf: CPF       
     errors:
       messages:
         record_invalid: "Falha na Validação: %{errors}"
         restrict_dependent_destroy:
           one: "Não é possivel apagar esse %{model} pois ele possui um %{record} dependente"
           many: "Não é possivel apagar esse %{model} pois ele possui %{record} dependentes"
+        blank: não pode ser vazio
