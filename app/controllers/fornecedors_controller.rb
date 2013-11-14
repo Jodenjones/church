@@ -37,7 +37,7 @@ class FornecedorsController < ApplicationController
 
   def destroy
     if not @fornecedor.destroy
-        flash[:error] = @fornecedor.parceiro.errors.first[1]
+      @fornecedor.errors.full_messages.each { |m| (flash[:error] ||= " ") << m }
     end
     respond_to do |format|
       format.html { redirect_to fornecedors_url }

@@ -49,7 +49,7 @@ class MembersController < ApplicationController
   # DELETE /members/1.json
   def destroy
     if not @member.destroy
-        flash[:error] = @member.parceiro.errors.first[1]
+      @member.errors.full_messages.each { |m| (flash[:error] ||= " ") << m }
     end
     respond_to do |format|
       format.html { redirect_to members_url }
