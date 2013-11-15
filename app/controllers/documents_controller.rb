@@ -11,7 +11,9 @@ class DocumentsController < ApplicationController
   end
   
   def listar_disp_baixa
-    @documents = Document.docs_disp_baixa
+    @title = params[:tipo] == 'R' ?"Baixa de Contas a Receber" : "Baixa de Conta a Pagar"
+    @documents = Document.docs_abertos params[:tipo]
+    @tipo = params[:tipo]
   end
   
   def show
@@ -20,6 +22,7 @@ class DocumentsController < ApplicationController
 
   def new
     @title = params[:tipo] == 'R' ?"Nova conta a Receber" : "Nova conta a Pagar"
+    @tipo = params[:tipo]
     @document = Document.new
     @document.venc = Time.now
   end
@@ -49,7 +52,8 @@ class DocumentsController < ApplicationController
     else
       flash[:error] = "informe o Caixa"
     end
-    redirect_to disponiveis_baixa_url
+    
+    redirect_to params[:tipo] == 'R' ?disponiveis_baixa_receber_url : disponiveis_baixa_pagar_url
      
     #respond_to do |format|
     #  if @document.update(document_params)

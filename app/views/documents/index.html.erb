@@ -1,11 +1,12 @@
 <%= link_to 'New Document', @link_new %>
 
-<fieldset>
+
+	<!-- >
 	<legend>Lista de Documentos</legend>
 	<%= form_tag("/documents", :method => :get) do %>		
 		<%= submit_tag 'Filtrar', :class => 'button'%>
 	<% end %>
-
+	-->
 	<table>
 	  <thead>
 	    <tr>
@@ -24,4 +25,3 @@
 	  	<%= render partial: @documents %>
 	  </tbody>
 	</table>
-</fieldset>

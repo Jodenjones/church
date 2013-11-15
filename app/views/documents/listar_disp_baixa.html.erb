@@ -1,13 +1,16 @@
-<h5>Documentos para Baixa</h5>
+<h5><%= @title %></h5>
+<!--
 <fieldset>
 	<legend>Filtros</legend>
 	<%= form_tag("/documents", :method => :get) do %>		
 		<%= submit_tag 'Filtrar', :class => 'button'%>
 	<% end %>
 </fieldset>
+-->
 <fieldset>
 	<legend>Dados da Baixa</legend>
-	<%= form_tag('/documents/baixar', :method => :post) do %>  
+	<%= form_tag('/documents/baixar', :method => :post) do %>
+	 	<%= hidden_field_tag :tipo, @tipo %>  
 		<%= select_tag "caixa", options_from_collection_for_select(Caixa.all, "id", "name"), :prompt => "Selecione o caixa" %>
 		
 		<table>

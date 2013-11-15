@@ -7,16 +7,12 @@ class Document < ActiveRecord::Base
   validates_presence_of :account
   validates_presence_of :valor
   
-  def self.docs_abertos
-    Document.where(" sta = 'A'")
+  def self.docs_abertos( p_tipo)
+    Document.where :sta => 'A', :tipo => p_tipo
   end
   
-  def self.docs_baixados
-    Document.where(" sta = 'B'")
-  end
-  
-  def self.docs_disp_baixa
-    Document.where(" sta = 'A'")
+  def self.docs_baixados( p_tipo)
+    Document.where :sta => 'B', :tipo => p_tipo
   end
   
   def baixar(caixa_id)

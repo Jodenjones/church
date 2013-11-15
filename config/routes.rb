@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do  
 
+  resources :services
+
   resources :caixas
 
   root 'site#index'
@@ -21,7 +23,8 @@ Blog::Application.routes.draw do
   get "sessions/login" => 'sessions#new', :as => :login
   delete "sessions/logout" => 'sessions#destroy', :as => :logout
  
-  get "documents/listar_disp_baixa" => "documents#listar_disp_baixa", :as => :disponiveis_baixa
+  get "documents/listar_pagar_disp_baixa" => "documents#listar_disp_baixa", :as => :disponiveis_baixa_pagar, :tipo => 'P'
+  get "documents/listar_receber_disp_baixa" => "documents#listar_disp_baixa", :as => :disponiveis_baixa_receber, :tipo => 'R'
   post "documents/baixar" => "documents#baixar", :as => :baixar
   
   get "documents/listar_pagar" => "documents#index", :as => :listar_pagar, :tipo => 'P'
