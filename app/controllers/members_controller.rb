@@ -1,25 +1,18 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  # GET /members
-  # GET /members.json
   def index
     @members = Member.all
   end
 
-  # GET /members/new
   def new
     @member = Member.new
-    @parceiro = Parceiro.new    
-    @member.parceiro = @parceiro
+    @member.build_parceiro
     @member.entrada = Time.now 
   end
 
-  # POST /members
-  # POST /members.json
   def create
     @member = Member.new(member_params)
-
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
@@ -31,8 +24,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
       if @member.update(member_params)
@@ -45,8 +36,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # DELETE /members/1
-  # DELETE /members/1.json
   def destroy
     if not @member.destroy
       @member.errors.full_messages.each { |m| (flash[:error] ||= " ") << m }
@@ -58,12 +47,11 @@ class MembersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_member
       @member = Member.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
       params.require(:member).permit(:entrada,parceiro_attributes:[:id,:name,:cpf])
     end
