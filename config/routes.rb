@@ -1,10 +1,8 @@
-Blog::Application.routes.draw do  
-
+Blog::Application.routes.draw do
+  root 'site#index'  
+  resources :orders
   resources :services
-
   resources :caixas
-
-  root 'site#index'
   resources :fornecedors
   resources :accounts
   resources :members
