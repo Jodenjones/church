@@ -7,5 +7,4 @@ class Parceiro < ActiveRecord::Base
   validates_uniqueness_of :cpf, :on => :create
   
   
-  
 end
