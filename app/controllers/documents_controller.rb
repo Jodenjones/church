@@ -1,7 +1,13 @@
 class DocumentsController < ApplicationController
   
   def index
-    @documents = Document.all
+    if params[:tipo] == 'R'
+      @documents = Document.where :tipo => "R"
+      @link_new = new_receber_url
+    else
+      @documents = Document.where :tipo => "A"
+      @link_new = new_pagar_url
+    end
   end
   
   def listar_disp_baixa
@@ -13,6 +19,7 @@ class DocumentsController < ApplicationController
   end
 
   def new
+    @title = params[:tipo] == 'R' ?"Nova conta a Receber" : "Nova conta a Pagar"
     @document = Document.new
     @document.venc = Time.now
   end
@@ -33,7 +40,6 @@ class DocumentsController < ApplicationController
 
   def baixar
     caixa_id = params[:caixa]
-    
     if (caixa_id.size > 0) and (caixa = Caixa.find(caixa_id))
       params[:documents_ids].each do |d|
         doc = Document.find d
@@ -44,10 +50,7 @@ class DocumentsController < ApplicationController
       flash[:error] = "informe o Caixa"
     end
     redirect_to disponiveis_baixa_url
-    
-    
-    
-        
+     
     #respond_to do |format|
     #  if @document.update(document_params)
     #    format.html { redirect_to @document, notice: 'Document was successfully updated.' }

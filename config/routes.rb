@@ -23,8 +23,13 @@ Blog::Application.routes.draw do
  
   get "documents/listar_disp_baixa" => "documents#listar_disp_baixa", :as => :disponiveis_baixa
   post "documents/baixar" => "documents#baixar", :as => :baixar
+  
+  get "documents/listar_pagar" => "documents#index", :as => :listar_pagar, :tipo => 'P'
+  get "documents/listar_receber" => "documents#index", :as => :listar_receber, :tipo => 'R'
+  get "documents/new_pagar" => "documents#new", :as => :new_pagar, :tipo => 'P'
+  get "documents/new_receber" => "documents#new", :as => :new_receber, :tipo => 'R'
  
-  resources :documents, :only => [:index,:new,:create,:show]
+  resources :documents, :only => [:index,:create,:show]
   
   get "extrato/index"  
   
