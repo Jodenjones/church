@@ -1,0 +1,20 @@
+<%
+  @order = Order.new
+  @order.order_items << @order_item
+  form_for @order do |f|    
+    @fields = f.fields_for :order_items, :child_index => "#{@order_item.service.id}" do |builder|  
+      render :partial => 'order_items/order_item', :locals => {:f => builder}  
+    end
+  end
+  
+%>
+var div_existe = $("#order_item_<%= @order_item.service_id%>");
+if (div_existe.html() != null){
+  //alert(div_existe.html());
+  div_existe.remove();
+}
+var content = "<%= escape_javascript(@fields) %>";
+
+//alert(content);
+div_items = $("#order_items_tag");
+div_items.append(content);

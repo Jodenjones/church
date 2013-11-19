@@ -1,0 +1,19 @@
+<h1>Listing orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fornecedor</th>
+      <th>Total</th>
+      <th>Obs</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>  <%= render :partial => @orders%> </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

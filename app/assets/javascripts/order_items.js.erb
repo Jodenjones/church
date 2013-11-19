@@ -1,0 +1,11 @@
+//alert("jhon")
+submit_form = function(link){  
+  $.ajax({
+    type: 'GET',
+    url: $("#form_item").attr("action"),
+    data: $("#form_item").serialize(), 
+    success: function(response) {
+      
+    },
+  });
+}

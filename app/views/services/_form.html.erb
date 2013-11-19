@@ -1,0 +1,11 @@
+<%= form_for(@service) do |f| %>
+	<%= render :partial => 'shared/error_messages', :locals => {:modelo => @service} %>
+  
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

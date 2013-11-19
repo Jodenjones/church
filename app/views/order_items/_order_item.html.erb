@@ -1,0 +1,8 @@
+<tr id = "order_item_<%= f.object.service_id if f.object %>">
+	<td> <%= f.text_field :id, :value => f.object.id  %></td>
+	<td> <%= f.text_field :service_id %></td>
+	<td> <%= f.text_field :valor %></td>
+	<td> <%= f.hidden_field :_destroy, :class => :remover %></td>
+	
+	<td> <%= link_to 'Remover', orders_item_remove_url(f.object.service.id), :method => :delete,:remote => true, :confirm => "Tem certeza que deseja excluir?" %></td>
+</tr>

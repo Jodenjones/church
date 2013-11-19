@@ -1,0 +1,77 @@
+<nav class="top-bar">
+	<ul class="title-area">
+	    <li class="name"><h1><%= link_to "Inicio", root_url %></h1></li>
+	</ul>
+	
+	<section class="top-bar-section">
+	 	
+		<%if logged? %>
+		<!-- Left Nav Section -->
+		    <ul class="left">
+				<li class="divider hide-for-small"></li>
+		      
+				<li class="has-dropdown"><a href="#">Cadastros</a>
+		        	<ul class="dropdown">
+		          		<li><%= link_to "Estados", states_url %></li>
+		          		<li><%= link_to "Cidades", cities_url %></li>
+		          		<li><%= link_to "Membros", members_url %></li>
+		          		<li><%= link_to "Fornecedores", fornecedors_url %></li>
+		        	</ul>
+		      	</li>
+		      	
+		      	<li class="has-dropdown"><a href="#">Entrada/Serviços</a>
+		        	<ul class="dropdown">
+		          		<li><%= link_to "Serviços", services_url %></li>
+		          		<li><%= link_to "Ordem de Serviços", orders_url %></li>
+		        	</ul>
+		      	</li>
+		      
+		      <li class="divider hide-for-small"></li>
+		      
+		      <li class="has-dropdown"><a href="#">Financeiro</a>
+		        <ul class="dropdown">
+					<li><%= link_to "Contas", accounts_url %></li>
+					<li><%= link_to "Caixas", caixas_url %></li>
+					<li class="has-dropdown"><a href="#">Contas a Pagar</a>
+				    	<ul class="dropdown">
+				        	<li><%= link_to "Lançamento", listar_pagar_url %></li>
+				         	<li><%= link_to "Baixa", disponiveis_baixa_pagar_url %></li>
+						</ul>
+					</li>
+				    <li class="has-dropdown"><a href="#">Contas a Receber</a>
+				    	<ul class="dropdown">
+				        	<li><%= link_to "Lançamento", listar_receber_url %></li>
+				          	<li><%= link_to "Baixa", disponiveis_baixa_receber_url %></li>
+				        </ul>
+					</li>
+				    <li><%= link_to "Extrato", extrato_index_url %></li>
+		        </ul>
+		      </li>
+		    </ul>
+		<%end%>
+		
+		<!-- Right Nav Section -->
+	    <ul class="right">
+			<ul class="title-area">
+				<%if logged? %>
+				<li class="name"><h1><%= link_to "#{current_user.profile.name}", edit_profile_path(current_user.profile.name) %></h1></li>
+					<li class="name"><h1><%= link_to "Sair", logout_path, :method => :delete, :confirm => "Tem certeza que deseja sair ?" %></h1></li>
+				<%else%>
+					<li class="name"><h1><%= link_to "Login","#", 'data-reveal-id'=>"modal_login" %></h1></li>
+					<li class="name"><h1><%= link_to "Sing in","#", 'data-reveal-id'=>"modal_sigin" %></h1></li>
+				<%end%>
+  			</ul>		      
+	    </ul>
+	</section>
+</nav>
+	
+<div id="modal_login" class="reveal-modal small">
+  <%= render partial: 'sessions/new'%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="modal_sigin" class="reveal-modal small">
+  <%= render partial: 'users/new'%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+

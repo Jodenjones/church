@@ -1,0 +1,45 @@
+<%= render :partial => 'order_items/form', :locals => {:item => OrderItem.new} %>
+
+<%= form_for(@order) do |f| %>
+	<%= render :partial => 'shared/error_messages', :locals => { :modelo => @order }%>  
+	<fieldset>
+		<div class="row">
+       		<div class="six columns">
+	    		<div class="custom dropdown">
+	    			<%= f.label :fornecedor_id %><br>
+	    			<%= collection_select(:order, :fornecedor_id, Fornecedor.all, :id, :name, {:prompt => "Selecione o Fornecedor"}, :class => "selector") %>
+	    		</div>
+	  		</div>
+		</div>
+		<div class="row">
+       		<div class="small-3 columns">
+				<%= f.label :total %>
+			</div>
+			<div class="small-9 columns">
+			    <%= f.text_field :total %>
+			</div>
+		</div>
+		<div class="row">
+       		<div class="small-3 columns">
+				<%= f.label :obs %>
+			</div>
+			<div class="small-9 columns">
+			    <%= f.text_area :obs %>
+			</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Service</th>
+				    <th>Valor</th>
+				</tr>
+			</thead>
+			<tbody id = "order_items_tag">  					
+				<%= f.fields_for :order_items, :include_id => false do |i|%>
+					<%= render :partial => 'order_items/order_item', :locals => {:f => i} %>
+				<% end %>		  	
+			</tbody>
+		</table>
+		<%= f.submit 'Salvar', :class => 'button', :confirm => "Tem certeza que deseja salvar?" %>
+	</fieldset>
+<% end %>

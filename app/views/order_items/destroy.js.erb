@@ -1,0 +1,5 @@
+var div_existe = $("#order_item_<%= @service%>");
+if (div_existe.html() != null){
+	div_existe.find(".remover").val("1");
+  	div_existe.hide();
+}

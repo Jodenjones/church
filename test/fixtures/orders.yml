@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fornecedor_id: 1
+  total: 9.99
+  obs: MyText
+
+two:
+  fornecedor_id: 1
+  total: 9.99
+  obs: MyText
