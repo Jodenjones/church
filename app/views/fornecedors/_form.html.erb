@@ -1,38 +1,13 @@
-<%= form_for(@fornecedor) do |f| %>
-	<% if @fornecedor.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(@fornecedor.errors.count, "error") %> prohibited this fornecedor from being saved:</h2>
-      		<ul>
-      			<% @fornecedor.errors.full_messages.each do |msg| %>
-        			<li><%= msg %></li>
-      			<% end %>
-			</ul>
-		</div>
-	<% end %>
+<%= simple_form_for @fornecedor do |f| %>
+	<%= render 'shared/error_messages', modelo: f.object %>
+	<%= render :partial => 'parceiros/form', :locals => {:f => f, :parceiro => :parceiro }%>
 	
-  	<%= render :partial => 'parceiros/form', :locals => {:f => f, :parceiro => :parceiro }%>
-  	
-  	<fieldset>
+	<fieldset>
 		<legend>Dados do Fornecedor</legend>
-		<div class="row">
-        	<div class="small-3 columns">
-				<%= f.label :regime %>
-			</div>
-			<div class="small-6 columns">
-			    <%= f.select :regime,[['Simples', '1'], ['Lucro Real', '2']], :prompt => "Selecione o Regime Tributário" %>
-			</div>
-		</div>
-		
-		<div class="row">
-        	<div class="small-3 columns">
-				<%= f.label :tipo %>
-			</div>
-			<div class="small-6 columns">
-			    <%= f.select :tipo,[['Produtos', '1'], ['Serviços', '2']], :prompt => "Selecione o tipo" %>
-			</div>
-		</div>
+		<%= f.input :regime, label: 'Regime' %>
+		<%= f.label :tipo %>
+		<%= f.select :tipo,[['Produtos', '1'], ['Serviços', '2']], :prompt => "Selecione o tipo" %>
 	</fieldset>
-  	
-    <%= f.submit 'Salvar', :class=>'button' %>
-    
+	<br>
+	<%= f.button :submit,'Salvar', :class => 'button' %>
 <% end %>

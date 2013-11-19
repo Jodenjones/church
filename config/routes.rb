@@ -1,6 +1,10 @@
 Blog::Application.routes.draw do
+  post "order_items/add_item", :as => :orders_item_add
+  delete "order_items/:service_id/remove_item" => "order_items#destroy", :as => :orders_item_remove
+  
   root 'site#index'  
   resources :orders
+  resources :order_items
   resources :services
   resources :caixas
   resources :fornecedors
